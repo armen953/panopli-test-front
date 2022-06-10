@@ -1,10 +1,11 @@
 import HomePageCarousel from "../components/HomePageCarousel";
 import Page from "../components/Page";
 import ProductCard from "../components/ProductCard";
+import { config } from "../config/config";
 import useFetch from "../hooks/useFetch";
 
 function Home() {
-  const [isLoading, lastProducts] = useFetch('http://127.0.0.1:8080/api/products?newProductLimit=6')
+  const [isLoading, lastProducts] = useFetch(`${config.BASE_URL}/api/products?newProductLimit=6`)
 
   return (
     <Page pageName="homePage">

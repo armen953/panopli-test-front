@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import CartProduct from "../components/CartProduct";
 import Page from "../components/Page"
 import { resetState } from "../redux/cartReducer";
+import { config } from "../config/config"
 
 function Checkout() {
   const products = useSelector((state) => state.cart.products);
@@ -101,7 +102,7 @@ function Checkout() {
       body: JSON.stringify(data)
     };
     try {
-      const response = await fetch('http://127.0.0.1:8080/api/orders', requestOptions)
+      const response = await fetch(`${config.BASE_URL}/api/orders`, requestOptions)
       const resData = await response.json();
       setIsSubmiting(false)
       if (response.ok) {

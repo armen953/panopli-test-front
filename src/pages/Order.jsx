@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CartProduct from "../components/CartProduct";
 import Page from "../components/Page";
-import useFetch from "../hooks/useFetch";
+import { config } from "../config/config";
 
 function Order() {
 
@@ -19,7 +19,7 @@ function Order() {
     setIsLoading(true)
     let response;
     try {
-      response = await fetch(`http://127.0.0.1:8080/api/orders/${orderId}`);
+      response = await fetch(`${config.BASE_URL}/api/orders/${orderId}`);
       const responseData = await response.json();
       console.log(responseData);
       if (response.ok) {

@@ -4,13 +4,14 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Page from "../components/Page";
 import ProductCarousel from "../components/ProductCarousel";
+import { config } from "../config/config";
 import useFetch from "../hooks/useFetch";
 import useQuantity from "../hooks/useQuantity";
 import { addProduct } from "../redux/cartReducer";
 
 function Product() {
 	let { slug } = useParams();
-	const [isLoading, product] = useFetch(`http://127.0.0.1:8080/api/products/${slug}`)
+	const [isLoading, product] = useFetch(`${config.BASE_URL}/api/products/${slug}`)
 
 	const [hoverColor, setHoverColor] = useState(null);
 	const [selectedQuantity, setSelectedQuantity] = useQuantity(1, 1, product.quantity)

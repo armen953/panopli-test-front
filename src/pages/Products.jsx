@@ -1,9 +1,10 @@
 import Page from "../components/Page";
 import ProductCard from "../components/ProductCard";
+import { config } from "../config/config";
 import useFetch from "../hooks/useFetch";
 
 function Products() {
-  const [isLoading, lastProducts] = useFetch('http://127.0.0.1:8080/api/products')
+  const [isLoading, lastProducts] = useFetch(`${config.BASE_URL}/api/products`)
 
   return (
     <Page pageName="productsPage">
